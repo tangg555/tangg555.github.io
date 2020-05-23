@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Dijkstra算法的简单python实现（附代码）</title>
+      <link href="/2020/05/19/2019-03-21-dijkstra-algorithms/"/>
+      <url>/2020/05/19/2019-03-21-dijkstra-algorithms/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Dijkstra算法介绍："><a href="#Dijkstra算法介绍：" class="headerlink" title="Dijkstra算法介绍："></a>Dijkstra算法介绍：</h2><p><a href="http://wiki.jikexueyuan.com/project/easy-learn-algorithm/dijkstra.html" target="_blank" rel="noopener">http://wiki.jikexueyuan.com/project/easy-learn-algorithm/dijkstra.html</a></p><p>按照Dijkstra算法的思路用python实现了一下，用邻接矩阵表示点与点之间边的权重。刚接触Dijkstra算法，网上python实现的程序太过复杂因此没看，如果程序有错误欢迎指出。</p><p>以下图为例：<br><img src="https://img-blog.csdnimg.cn/20190321140749217.png" alt></p><p>他的邻接矩阵如下：<br><img src="https://img-blog.csdnimg.cn/20190321141010935.png" alt></p><p>=&gt;</p><pre class="line-numbers language-Python"><code class="language-Python">Inf = float('inf')Adjacent = [[0, 1, 12, Inf, Inf, Inf],             [Inf, 0, 9, 3, Inf, Inf],             [Inf, Inf, 0, Inf, 5, Inf],             [Inf, Inf, 4, 0, 13, 15],             [Inf, Inf, Inf, Inf, 0, 4],             [Inf, Inf, Inf, Inf, Inf, 0]]Src, Dst, N = 0, 5, 6<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p> Src表示起点的编号，Dst表示终点的编号，N表示结点个数.</p><p> Dijkstra算法实现:</p><pre class="line-numbers language-Python"><code class="language-Python">def dijstra(adj, src, dst, n):    dist = [Inf] * n    dist[src] = 0    book = [0] * n # 记录已经确定的顶点    # 每次找到起点到该点的最短途径    u = src    for _ in range(n-1):    # 找n-1次        book[u] = 1 # 已经确定        # 更新距离并记录最小距离的结点        next_u, minVal = None, float('inf')        for v in range(n):    # w            w = adj[u][v]            if w == Inf:    # 结点u和v之间没有边                continue            if not book[v] and dist[u] + w < dist[v]: # 判断结点是否已经确定了，                dist[v] = dist[u] + w                if dist[v] < minVal:                    next_u, minVal = v, dist[v]        # 开始下一轮遍历        u = next_u    print(dist)    return dist[dst]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>dist为起点-&gt;每个结点的距离的列表。（所以起点要赋值为0:dist[src] = 0），而 book的作用是记录已经确定了最短距离的结点的列表。整体程序如下：</p><pre class="line-numbers language-Python"><code class="language-Python">​Inf = float('inf')Adjacent = [[0, 1, 12, Inf, Inf, Inf],            [Inf, 0, 9, 3, Inf, Inf],            [Inf, Inf, 0, Inf, 5, Inf],            [Inf, Inf, 4, 0, 13, 15],            [Inf, Inf, Inf, Inf, 0, 4],            [Inf, Inf, Inf, Inf, Inf, 0]]Src, Dst, N = 0, 5, 6def dijstra(adj, src, dst, n):    dist = [Inf] * n    dist[src] = 0    book = [0] * n # 记录已经确定的顶点    # 每次找到起点到该点的最短途径    u = src    for _ in range(n-1):    # 找n-1次        book[u] = 1 # 已经确定        # 更新距离并记录最小距离的结点        next_u, minVal = None, float('inf')        for v in range(n):    # w            w = adj[u][v]            if w == Inf:    # 结点u和v之间没有边                continue            if not book[v] and dist[u] + w < dist[v]: # 判断结点是否已经确定了，                dist[v] = dist[u] + w                if dist[v] < minVal:                    next_u, minVal = v, dist[v]        # 开始下一轮遍历        u = next_u    print(dist)    return dist[dst]dijstra(Adjacent, Src, Dst, N)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>运行结果为：[0, 1, 8, 4, 13, 17]</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> Dijkstra </tag>
+            
+            <tag> 算法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>使用docker在镜像中运行宿主机程序</title>
+      <link href="/2019/07/05/2019-07-05-shi-yong-docker-zai-jing-xiang-zhong-yun-xing-su-zhu-ji-cheng-xu-zhuan-zai/"/>
+      <url>/2019/07/05/2019-07-05-shi-yong-docker-zai-jing-xiang-zhong-yun-xing-su-zhu-ji-cheng-xu-zhuan-zai/</url>
+      
+        <content type="html"><![CDATA[<a id="more"></a><p><strong>转载自：</strong></p><p>易百教程 <a href="https://www.yiibai.com/docker/run.html" target="_blank" rel="noopener">https://www.yiibai.com/docker/run.html</a></p><p><code>docker run</code>命令用于在新容器中运行命令。<code>docker run</code>命令首先在指定的映像上创建一个可写容器层，然后使用指定的命令启动它。 也就是说，<code>docker run</code>相当于API <code>/containers/create</code> 和 <code>/containers/(id)/start</code>。 可以使用<code>docker start</code>重新启动停止的容器，并使用其所有先前的更改完整。 请参阅<code>docker ps -a</code>查看所有容器的列表。</p><p><strong>用法</strong></p><pre class="Shell"><code>docker run [OPTIONS] IMAGE [COMMAND] [ARG...]</code></pre><h2 id="h2-u4F8Bu5B50"><a name="例子"></a>例子</h2><p><strong>分配名称并分配伪TTY(<code>-name</code>，<code>-it</code>)</strong></p><pre class="Shell"><code>$ docker run --name test -it debianroot@d6c0fe130dba:/# exit 13$ echo $?13$ docker ps -a | grep testd6c0fe130dba        debian:7            "/bin/bash"         26 seconds ago      Exited (13) 17 seconds ago                         test</code></pre><p>此示例使用<code>debian:latest</code>映像运行一个名为<code>test</code>的容器。 <code>-it</code> 指示Docker分配连接到容器的stdin的伪TTY; 在容器中创建一个交互式的bash shell。 在该示例中，bash shell通过输入<code>exit 13</code>退出。该退出代码传递给<code>docker run</code>的调用者，并记录在测试容器的元数据中。</p><p><strong>捕获容器ID(-cidfile)</strong></p><pre class="Shell"><code>$ docker run --cidfile /tmp/docker_test.cid ubuntu echo "test"</code></pre><p>这将创建一个容器并打印测试到控制台。<code>--cidfile</code>标志使Docker尝试创建一个新文件，并将容器ID写入它。如果文件已经存在，Docker将返回一个错误。 Docker运行退出时，Docker将关闭此文件。</p><p><strong>完整的容器功能(-privileged)</strong></p><pre class="Shell"><code>$ docker run -t -i --rm ubuntu bashroot@bc338942ef20:/# mount -t tmpfs none /mntmount: permission denied</code></pre><p>这将不起作用，因为默认情况下，大多数潜在的危险内核功能被丢弃; 包括<code>cap_sys_admin</code>(这是挂载文件系统所需的)。 但是，<code>--privileged</code>标志将允许它运行：</p><pre class="Shell"><code>$ docker run -t -i --privileged ubuntu bashroot@50e3f57e16e6:/# mount -t tmpfs none /mntroot@50e3f57e16e6:/# df -hFilesystem      Size  Used Avail Use% Mounted onnone            1.9G     0  1.9G   0% /mnt</code></pre><p><strong>设置工作目录[-w]</strong></p><pre class="Shell"><code>$ docker  run -w /path/to/dir/ -i -t  ubuntu pwd</code></pre><p><code>-w</code>允许在目录中执行命令，这里是<code>/path/to/dir/</code>。 如果路径不存在，则在容器内创建。</p><p><strong>为每个容器设置存储驱动程序选项</strong></p><pre class="Shell"><code>$ docker run -it --storage-opt size=120G fedora /bin/bash</code></pre><p><strong>挂载tmpfs(-tmpfs)</strong></p><pre class="Shell"><code>$ docker run -d --tmpfs /run:rw,noexec,nosuid,size=65536k my_image</code></pre><p><code>--tmpfs</code>标志使用<code>rw</code>，<code>noexec</code>，<code>nosuid</code>，<code>size = 65536k</code>选项将一个空<code>tmpfs</code>装载到容器中。</p><p><strong>挂载卷(-v，-read-only)</strong></p><pre class="Shell"><code>$ docker  run  -v `pwd`:`pwd` -w `pwd` -i -t  ubuntu pwd</code></pre><p><code>-v</code>标志将当前工作目录装载到容器中。 <code>-w</code>允许在当前工作目录中执行命令，将目录更改为<code>pwd</code>返回的值。所以这个组合使用容器执行命令，但在当前工作目录中。</p><pre class="Shell"><code>$ docker run -v /doesnt/exist:/foo -w /foo -i -t ubuntu bash</code></pre><p>当绑定卷的主机目录不存在时，Docker将自动在主机上创建此目录。 在上面的示例中，Docker将在启动容器之前创建<code>/doesnt/exists</code>文件夹。</p><pre class="Shell"><code>$ docker run --read-only -v /icanwrite busybox touch /icanwrite/here</code></pre><p>卷可以与<code>--read-only</code>组合使用，以控制容器写入文件的位置。 <code>--read-only</code>标志将容器的根文件系统挂载为只读禁止写入容器的指定卷以外的位置。</p><p>原文出自【易百教程】，商业转载请联系作者获得授权，非商业转载请保留原文链接：https://www.yiibai.com/docker/run.html<br> </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Docker </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+            <tag> docker镜像 </tag>
+            
+            <tag> 宿主机 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Docker容器的创建、启动、和停止</title>
+      <link href="/2019/07/05/2019-07-05-docker-rong-qi-de-chuang-jian-qi-dong-he-ting-zhi-zhuan-zai/"/>
+      <url>/2019/07/05/2019-07-05-docker-rong-qi-de-chuang-jian-qi-dong-he-ting-zhi-zhuan-zai/</url>
+      
+        <content type="html"><![CDATA[<a id="more"></a><p>1、容器是独立运行的一个或一组应用，及他们的运行环境。容器是Docker中的一个重要的概念。</p><p><strong>2、docker容器的启动有三种方式</strong><br>a.交互方式，基于镜像新建容器并启动<br>例如我们可以启动一个容器，打印出当前的日历表<br>[root@rocketmq-nameserver4 ~]# docker run my/python:v1 cal ##my/python:v1为镜像名和标签<br><img alt class="has" src="https://images2018.cnblogs.com/blog/270324/201803/270324-20180320141006656-1163681357.png"></p><p>我们还可以通过指定参数，启动一个bash交互终端。<br>[root@rocketmq-nameserver4 ~]# docker run -it my/python:v1 /bin/bash<br><img alt class="has" src="https://images2018.cnblogs.com/blog/270324/201803/270324-20180320141018576-2113140501.png"><br>参数-t让Docker分配一个伪终端并绑定在容器的标准输入上，-i让容器的标准输入保持打开。</p><p>使用docker run命令来启动容器，docker在后台运行的标准操作包括<br>1.检查本地是否存在指定的镜像，不存在则从公有仓库下载<br>2.使用镜像创建并启动容器<br>3.分配一个文件系统，并在只读的镜像层外面挂载一层可读可写层<br>4.从宿主主机配置的网桥接口中桥接一个虚拟接口道容器中去<br>5.从地址池分配一个ip地址给容器<br>6.执行用户指定的应用程序<br>7.执行完毕之后容器被终止<br><img alt class="has" src="https://images2018.cnblogs.com/blog/270324/201803/270324-20180320141029918-349771940.png"><br>my/sinatra:v2基于training/sinatra镜像进行修改后的镜像，training/sinatra为公有仓库上的镜像。</p><p>b、短暂方式，直接将一个已经终止的容器启动运行起来<br>可以使用docker start命令，直接将一个已经终止的容器启动运行起来。</p><p>[root@rocketmq-nameserver4 ~]# docker run my/python:v1 /bin/echo hello test <br>hello test<br>命令执行完，控制台会打印"hello test"，container就终止了，不过并没有消失，<br>可以用"docker ps -n 5 "看一下最新前5个的container，第一个就是刚刚执行过的container，可以再次执行一遍：docker start container_id</p><p>不过这次控制台看不到”hello test”了，只能看到ID，用logs命令才能看得到：docker logs container_id。<br>可以看到两个”hello test”了，因为这个container运行了两次。<br><img alt class="has" src="https://images2018.cnblogs.com/blog/270324/201803/270324-20180320141043102-2077108773.png"></p><p>c、daemon方式，守护态运行<br>即让软件作为长时间服务运行，这就是SAAS啊！</p><p>例如我们启动centos后台容器，每隔一秒打印当天的日历。<br>$ docker run -d centos /bin/sh -c "while true;do echo hello docker;sleep 1;done"</p><p>启动之后，我们使用docker ps -n 5查看容器的信息</p><p>要查看启动的centos容器中的输出，可以使用如下方式：<br>$ docker logs $CONTAINER_ID ##在container外面查看它的输出 <br>$ docker attach $CONTAINER_ID ##连接上容器实时查看：</p><p><strong>3、终止容器</strong><br>使用docker stop $CONTAINER_ID来终止一个运行中的容器。并且可以使用docker ps -a来看终止状态的容器。<br><img alt class="has" src="https://images2018.cnblogs.com/blog/270324/201803/270324-20180320141055377-965119728.png"></p><p>终止状态的容器，可以使用docker start来重新启动。<br><img alt class="has" src="https://images2018.cnblogs.com/blog/270324/201803/270324-20180320141106848-1725632174.png"></p><p>使用docker restart命令来重启一个容器。<br><img alt class="has" src="https://images2018.cnblogs.com/blog/270324/201803/270324-20180320141119426-840453652.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Docker </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+            <tag> docker 容器 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>win10+python3.6安装tensorflow-gpu1.8.0+CUDA9.0+cuDNN7.1</title>
+      <link href="/2018/04/28/2018-04-28-win10-python3.6-an-zhuang-tensorflow-gpu1.8.0-cuda9.0-cudnn7.1/"/>
+      <url>/2018/04/28/2018-04-28-win10-python3.6-an-zhuang-tensorflow-gpu1.8.0-cuda9.0-cudnn7.1/</url>
+      
+        <content type="html"><![CDATA[<a id="more"></a><p><span style="font-size:18px">以下记录为我在电脑上安装的过程(2018.4.28)：</span></p><p><strong><span style="font-size:18px">版本信息：</span></strong></p><p><span style="font-size:18px">win10</span></p><p><span style="font-size:18px">python3.6.5</span></p><p><span style="font-size:18px">tensorflow-gpu1.8.0</span></p><p><span style="font-size:18px">CUDA9.0</span></p><p><span style="font-size:18px">cuDNN7.1</span></p><p><strong><span style="font-size:18px"><br></span></strong></p><p><span style="font-size:18px"><strong>说明：</strong></span></p><p><span style="font-size:18px"><strong>1.为啥要安装这几个？<br></strong></span></p><p><span style="font-size:18px">tensorflow是微软家出的一个用来做深度学习的开源库，这个库有两个版本</span></p><p><span style="font-size:18px">一种是在CPU上运行，安装方法为：pip install tensorflow</span></p><p><span style="font-size:18px">一种是在GPU上运行，安装方法为<span style="font-size:18px">pip install</span> tensorflow-gpu</span></p><p><span style="font-size:18px">注意，gpu版本的库安了后想要运行必须要按CUDA和cuDNN缺一不可:-)</span></p><p><span style="font-size:18px"><br></span></p><p><span style="font-size:18px">2.cuDNN也就几十mb而已，但CUDA可是上了gb，那么为什么还要安gpu版本的呢？</span></p><p><span style="font-size:18px">......_(:з」∠)_答案是因为跑得快</span></p><p><span style="font-size:18px">根据Tensorlayor（一个针对tensorflow库做封装的开源项目）官网上的原话：<br></span></p><p><span style="font-size:18px">在 GPU 上训练全连接神经网络比在 CPU 上训练往往要快 10~20 倍。对于卷积神经网络，往往会快 50 倍。这需要有一个 NIVIDA 的 GPU，以及安装 CUDA 和 cuDNN。</span></p><p><span style="font-size:18px"><br></span></p><p><span style="font-size:18px">3.那么什么是CUDA和cuDNN呢？</span></p><p><span style="font-size:18px">这是英伟达家出的两个软件，用来使GPU具备做深度学习计算的能力</span></p><p><span style="font-size:18px"><br></span></p><p><span style="font-size:18px"><strong>安装：</strong></span></p><p><span style="font-size:18px">首先，python3的安装直接去官网找个安装包安装就行了，但注意，就目前来说python3.6以上的版本以及所有的32位版本 还不支持tensorflow库，所以安装的时候请选择python3.6以及以下的64位版本进行安装</span></p><p><span style="font-size:18px">然后，受网上教程的指导，我直接去英伟达家下了个最新版的CUDA，结果安好tensorflow-gpu后才发现，最新的<span style="font-size:18px">tensorflow-gpu</span>1.8.0需要<span style="font-size:18px">CUDA</span>9.0，所以我建议大家先用pip install<span style="font-size:18px">tensorflow-gpu</span>安装好后，运行以下程序看看报什么错误，再安装所需的CUDA。由于我已经安装好了，我就贴下第一次运行之后应该报的正确信息：</span></p><p><span style="font-size:18px">E:\extrasoftware\Python3.6\python.exe C:/Users/tangc/Desktop/tensor/tensor_cuda_test.py<br>E:\extrasoftware\Python3.6\lib\site-packages\h5py\__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.<br>&nbsp; from ._conv import register_converters as _register_converters<br>2018-04-28 16:35:54.797458: I T:\src\github\tensorflow\tensorflow\core\platform\cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2<br>2018-04-28 16:35:55.867494: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:1356] Found device 0 with properties:<br>name: GeForce GTX 960M major: 5 minor: 0 memoryClockRate(GHz): 1.176<br>pciBusID: 0000:01:00.0<br>totalMemory: 4.00GiB freeMemory: 3.35GiB<br>2018-04-28 16:35:55.867948: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:1435] Adding visible gpu devices: 0<br>2018-04-28 16:38:16.395720: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:923] Device interconnect StreamExecutor with strength 1 edge matrix:<br>2018-04-28 16:38:16.395909: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:929]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0<br>2018-04-28 16:38:16.396099: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:942] 0:&nbsp;&nbsp; N<br>2018-04-28 16:38:16.396584: I T:\src\github\tensorflow\tensorflow\core\common_runtime\gpu\gpu_device.cc:1053] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 3083 MB memory) -&gt; physical GPU (device: 0, name: GeForce GTX 960M, pci bus id: 0000:01:00.0, compute capability: 5.0)<br>b'hhh'<br></span></p><p><span style="font-size:18px">相应的python脚本为：</span></p><p><span style="font-size:18px"></span><pre name="code" class="python">import tensorflow as tfimport numpy as nphello=tf.constant('hhh')sess=tf.Session()print (sess.run(hello))</pre><br>如果没有安装好CUDA和cuDNN，python编辑器会告诉你应该去下载哪个版本的软件。</p><p><span style="font-size:18px"><br></span></p><p><span style="font-size:18px">然后是CUDA和cuDNN的安装<br></span></p><p><span style="font-size:18px">CUDA：<a target="_blank" href="https://developer.nvidia.com/cuda-downloads">点击打开链接</a><br></span></p><p><span style="font-size:18px">cuDNN：<a target="_blank" href="https://developer.nvidia.com/cudnn">点击打开链接</a><br></span></p><p><span style="font-size:18px">具体安装步骤篇幅太长了就不写了，网上教程很多，都没有什么大错误，</span></p><p><span style="font-size:18px">注意：</span></p><p><span style="font-size:18px">1.安装完之后需要在环境变量中添加对应的目录，不然python找不到相应文件和程序</span></p><p><span style="font-size:18px">2.CUDA成功安装后可以在命令行(cmd)中用nvcc -V查看对应信息<br></span></p><p><span style="font-size:18px">2.cuDNN下载前需要先注册</span></p><p><span style="font-size:18px"><br></span></p><p><span style="font-size:18px">接着，就可以愉快地用GPU进行深度学习了~<br></span></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+          <category> tensorflow </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> CUDA </tag>
+            
+            <tag> cuDNN </tag>
+            
+            <tag> tensorflow-gpu </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>fiddler软件抓包乱码问题以及https抓不到问题解决</title>
+      <link href="/2018/03/29/2018-03-29-fiddler-ruan-jian-zhua-bao-luan-ma-wen-ti-yi-ji-https-zhua-bu-dao-wen-ti-jie-jue/"/>
+      <url>/2018/03/29/2018-03-29-fiddler-ruan-jian-zhua-bao-luan-ma-wen-ti-yi-ji-https-zhua-bu-dao-wen-ti-jie-jue/</url>
+      
+        <content type="html"><![CDATA[<a id="more"></a><p><strong>环境：</strong></p><p><strong>fiddler4 <br></strong></p><p><strong>windows 10</strong></p><p>在第一次抓包的时候，我发现在Response一栏，除了Header文本正常之外，其他的文本是乱码状态：</p><p> </p><div></div><p><img src="https://img-blog.csdn.net/20180329133756360?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RhbmdnNTU1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="647" height="259" alt></p><p>我一开始以为是编码格式的问题，但后来发现网上有说是压缩的关系，得使用decode，但按下左上角的decode按钮后没有反应，</p><p><img src="https://img-blog.csdn.net/20180329133957164?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RhbmdnNTU1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt><br></p><p>Response上<br></p><p>这时候发现了黄色框的内容：</p><p><img src="https://img-blog.csdn.net/20180329134059217?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RhbmdnNTU1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt></p><p>点一下后问题解决，果然是编码的问题，如果怕麻烦的话，可以在transformer中设置不压缩：</p><p><img src="https://img-blog.csdn.net/20180329134143634?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RhbmdnNTU1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt><br></p><p></p><div>单机None后同样问题解决。</div><p><br></p><p><strong>此外：</strong></p><p><strong>如果左侧框中出现了很多host名为 tunnel to：</strong></p><p>在左上角 Rules选项中 选中hide connects可以解决<br></p><p><img src="https://img-blog.csdn.net/20180329134335213?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RhbmdnNTU1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt></p><p><strong>如果https网页抓不到，是因为在一般设置下只能抓http：</strong><br></p><p>需要在Tools的Options选项中更改HTTPS的tag：</p><p></p><div></div><br><p><img src="https://img-blog.csdn.net/20180329134626978?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RhbmdnNTU1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt><br></p><p></p><p>更改为：</p><p><img src="https://img-blog.csdn.net/20180329134646913?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RhbmdnNTU1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt><br></p>所有警告均无视即可，无视之后火狐浏览器网页不能打开，但谷歌浏览器没问题，其他的没试过<br>]]></content>
+      
+      
+      <categories>
+          
+          <category> 爬虫 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> fiddler </tag>
+            
+            <tag> 抓包 </tag>
+            
+            <tag> 乱码 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>centos7安装python3.6.2</title>
+      <link href="/2018/03/26/2018-03-26-centos7-an-zhuang-python3.6.2/"/>
+      <url>/2018/03/26/2018-03-26-centos7-an-zhuang-python3.6.2/</url>
+      
+        <content type="html"><![CDATA[<a id="more"></a><p><strong>本文参考：</strong></p><p><strong>https://blog.csdn.net/weixin_39728177/article/details/77368394</strong></p><p><strong>https://blog.csdn.net/blueheart20/article/details/70062671</strong></p><h2><strong>注意：以下代码中//后为注释内容！<br></strong></h2><h3><strong>1、环境介绍<br></strong></h3><p>   Centos 7,   当前的Python版本2.7.12</p><p>  &gt;&gt; cat /etc/os-release<br></p><p>命令可以查看系统的版本信息：</p><p>cat /etc/os-release <br>NAME="CentOS Linux"<br>VERSION="7 (Core)"<br>ID="centos"<br>ID_LIKE="rhel fedora"<br>VERSION_ID="7"<br>PRETTY_NAME="CentOS Linux 7 (Core)"<br>ANSI_COLOR="0;31"<br>CPE_NAME="cpe:/o:centos:centos:7"<br>HOME_URL="https://www.centos.org/"<br>BUG_REPORT_URL="https://bugs.centos.org/"<br><br>CENTOS_MANTISBT_PROJECT="CentOS-7"<br>CENTOS_MANTISBT_PROJECT_VERSION="7"<br></p><p>REDHAT_SUPPORT_PRODUCT="centos"</p><p></p><h2>2、下载Python3.6.2安装包</h2><p><span style="font-size:14px;"><span style="font-size:14px;"><span style="font-size:14px;">&gt;&gt;cd /usr/local/src   //放在src目录下<br></span></span></span></p><p></p><p align="left"><span style="font-size:14px;">&gt;&gt;wget https://www.python.org/ftp/python/3.6.2/Python-3.6.2.tar.xz</span></p><p align="left"><span style="font-size:14px;"></span></p><h2>3、安装python3.6.2可能使用的依赖</h2><p align="left"><span style="font-size:14px;"><span style="font-size:14px;">&gt;&gt;</span> yum install openssl-devel bzip2-devel expat-devel gdbm-develreadline-devel sqlite-devel</span></p><h2>4、解压Python-3.6.2.tar.xz</h2><p><font size="3">在<span style="font-size:14px;"><span style="font-size:14px;"><span style="font-size:14px;">/usr/local/src</span></span></span>/目录下，先解压xz文件，再解压tar文件。</font></p><p align="left"><span style="font-size:14px;"><span style="font-size:14px;">&gt;&gt;</span> xz -d Python-3.6.2.tar.xz</span></p><p><span style="font-size:14px;"></span></p><p align="left"><span style="font-size:14px;"><span style="font-size:14px;">&gt;&gt;</span> tar xvf Python-3.6.2.tar</span></p><p><span style="font-size:14px;"></span></p><p align="left"><font size="3"><font size="3"><font size="3"><span style="font-size:14px;"><span style="font-size:14px;"><span style="font-size:14px;">&gt;&gt;</span></span></span></font></font>cd ..    // <span style="font-size:14px;"><span style="font-size:14px;">切换到/usr/local/</span></span></font></p><p align="left"><font size="3"><font size="3"><font size="3"><font size="3"><font size="3"><font size="3"><font size="3"><span style="font-size:14px;"><span style="font-size:14px;"><span style="font-size:14px;">&gt;&gt;</span></span></span></font></font></font></font>mkdir Python3<br></font></font></font></p><p><span style="font-size:14px;"></span></p><p align="left"><font size="3"><span style="font-size:14px;"><span style="font-size:14px;"><span style="font-size:14px;">&gt;&gt;</span></span></span>cd /usr/local/Python3 //用来存放编译后的python3</font></p><p></p><p align="left"><span style="font-size:14px;"></span></p><p align="left"><font size="3"><span style="font-size:14px;">&gt;&gt;</span>cd <font size="3"><font size="3"><span style="font-size:14px;"><span style="font-size:14px;"><span style="font-size:14px;">/usr/local/src</span></span></span>/</font></font>Python-3.6.2</font></p><p><span style="font-size:14px;"></span></p><p align="left"><span style="font-size:14px;"><span style="font-size:14px;">&gt;&gt;</span> ./configure --prefix=/usr/local --enable-optimizations</span></p><p align="left"><span style="font-size:14px;">其中：<span style="font-size:14px;"><span style="font-size:14px;">--enable-optimizations</span></span>是python的优化命令，可以提升10%到20%的效率，但安装过程会变慢<br></span></p><p></p><p align="left"><span style="font-size:14px;"></span></p><p align="left"><font size="3"><span style="font-size:14px;"><span style="font-size:14px;"><span style="font-size:14px;">&gt;&gt;</span></span></span> make</font></p><p><span style="font-size:14px;"></span></p><p align="left"><font size="3"><span style="font-size:14px;"><span style="font-size:14px;"><span style="font-size:14px;">&gt;&gt;</span></span></span> make install</font></p><p align="left"><span style="font-size:14px;"></span></p><h2>5、更改/usr/bin/python链接</h2><p align="left"><font size="3"><font size="3"><font size="3"><span style="font-size:14px;"><span style="font-size:14px;"><span style="font-size:14px;">&gt;&gt;</span></span></span></font></font> cd /usr/bin</font></p><p align="left"><font size="3"><font size="3"><font size="3"><span style="font-size:14px;"><span style="font-size:14px;"><span style="font-size:14px;">&gt;&gt;</span></span></span></font></font> mv python python.backup    \\备份python，在linux系统中后缀没有意义，所以<span style="font-size:14px;"><span style="font-size:14px;"><span style="font-size:14px;">python.backup</span></span></span>只是换了个名字</font></p><p align="left"><font size="3"><font size="3"><font size="3"><span style="font-size:14px;"><span style="font-size:14px;"><span style="font-size:14px;">&gt;&gt;</span></span></span></font></font> ln -s /usr/local/Python3/bin/python3.6 /usr/bin/python   \\这里是python3.6，不是python3.6.2\\-s创建软链接</font></p><p align="left"><span style="font-size:14px;"><br></span></p><br><p><span style="font-size:14px;"></span></p><p align="left"><span style="font-size:14px;"></span></p><h2>6、更改yum脚本的python依赖</h2>因为yum依赖python2，python3中没有yum<p align="left"><font size="3"><font size="3"><font size="3"><span style="font-size:14px;"><span style="font-size:14px;"><span style="font-size:14px;">&gt;&gt;</span></span></span></font></font> cd /usr/bin</font></p><p align="left"><font size="3"><font size="3"><font size="3"><span style="font-size:14px;"><span style="font-size:14px;"><span style="font-size:14px;">&gt;&gt;</span></span></span></font></font> ls yum*</font></p><p align="left"><span style="font-size:14px;">yum   yum-config-manager   yum-debug-restore   yum-groups-manager</span></p><p align="left"><span style="font-size:14px;">yum-builddep   yum-debug-dump   yumdownloader</span></p><p><span style="font-size:14px;">使用vim更改以上文件</span></p><p><span style="font-size:14px;">#如： vim yum</span></p><p><span style="font-size:14px;">以上7个文件全部</span></p><p align="left"><span style="font-size:14px;">将# !/usr/bin/python  改为  # !/usr/bin/python2</span></p><p align="left"><span style="font-size:14px;">更改完毕后，依次按ESC Ctrl+: wq Enter</span></p><h2>7、修改gnome-tweak-tool配置文件</h2><p align="left"><span style="font-size:14px;"># vim /usr/bin/gnome-tweak-tool</span></p><p align="left"><span style="font-size:14px;"># !/usr/bin/python  改为  # !/usr/bin/python2</span></p><h2>8、修改urlgrabber配置文件</h2><p align="left"><span style="font-size:14px;"># vim /usr/libexec/urlgrabber-ext-down</span></p><p align="left"><span style="font-size:14px;"># !/usr/bin/python  改为  # !/usr/bin/python2</span></p><br><p></p><p align="left"><span style="font-size:14px;"><br></span></p><p><br></p><br><p><br></p><p></p><br><br><p></p><p><strong></strong><br></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> centos7 </tag>
+            
+            <tag> python3 </tag>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>在python3.6环境下使用cxfreeze打包程序</title>
+      <link href="/2018/03/22/2018-03-22-zai-python3.6-huan-jing-xia-shi-yong-cxfreeze-da-bao-cheng-xu/"/>
+      <url>/2018/03/22/2018-03-22-zai-python3.6-huan-jing-xia-shi-yong-cxfreeze-da-bao-cheng-xu/</url>
+      
+        <content type="html"><![CDATA[<a id="more"></a><p><strong>环境：python3.6</strong></p><p><strong>打包程序：aliens_invasion</strong></p><p>    原本想使用pyintaller 进行打包，使用pip的安装过程也没有问题，打包过程也没有显示任何错误</p><p><img src="//img-blog.csdn.net/20180322091805176?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L3RhbmdnNTU1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt><br></p><p>但最终生成的exe文件以及资源文件齐全的情况下，仍然无法运行：</p><p><img src="//img-blog.csdn.net/20180322091920524?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L3RhbmdnNTU1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt><img src="//img-blog.csdn.net/20180322091956580?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L3RhbmdnNTU1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt></p><p>后面通过visual studio的调试，发现是font的问题，于是我百度了有关说法，也有大佬说跟font没关系，是资源的相对路径有问题......终于到最后失去了耐心的我换了cxfreeze模块进行打包。</p><p><br></p><h4><strong>cx_Freeze模块的安装：</strong></h4><p>我所使用的是win10系统，首先在开始菜单里找到命令提示符</p><p><img src="//img-blog.csdn.net/20180322092340590?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L3RhbmdnNTU1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt></p><p>win10系统比较方便，直接在地下的搜索栏输入cmd即可，打开命令提示符后使用pip命令进行安装，</p><p><strong>注意：python3自带了pip模块，而python2需要手动安装pip，具体不详细解释</strong></p><p>cxfreeze命令对应的模块是cx_Freeze,我们在命令行敲入pip install cx_Freeze<strong><br></strong></p><p><img src="//img-blog.csdn.net/20180322093027683?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L3RhbmdnNTU1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt><br></p><p>安装完毕后有可能会提示cxfreeze不是内部或外部命令，这个我们可以通过编写一个bat文件解决</p><p><strong>注：该方法来自知乎大佬：</strong></p><p><strong><a href="https://www.zhihu.com/question/41211581" target="_blank" rel="noopener">https://www.zhihu.com/question/41211581</a><br></strong></p><p><strong>以下是原文：</strong></p><p><strong></strong></p><div><div>在cxfreeze的安装目录下即\Python34\Scripts，添加一个文件cxfreeze.bat(可用记事本)<br>cxfreeze.bat内容如下：<br>  @ echo off<br>C:\Python34\python.exe C:\Python34\Scripts\cxfreeze %*<br>即可解决上述问题，在该目录下输入czfreeze -h也可以查看安装情况（用pip install cxfreeze就可直接安装改第三方库）</div><br>我的是python 3.6环境，首先找到相应的python模块的路径<br><img src="//img-blog.csdn.net/20180322093426768?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L3RhbmdnNTU1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt><br></div><p><strong></strong></p><p>在<img src="//img-blog.csdn.net/2018032209355157?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L3RhbmdnNTU1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt></p><p><strong></strong></p><p>中建立一个<strong>cxfreeze</strong>.txt文件，然后在文件中写入：</p><p><strong></strong></p><p>@ echo off<strong><br></strong></p><p>你的python路径\python.exe 你的python路径\Scripts\cxfreeze %*</p><p>然后将文件的后缀改为bat即可，有些系统没有显示后缀的可以自行去百度上查找显示后缀的方法，</p><p>一般是在文件的查看选项中去掉隐藏属性的选项<strong><br></strong></p><p><strong>例：</strong></p><h4><span style="font-size:14px;">我的python路径是E:\extrasoftware\python3</span></h4>所以我写入了<br><p><strong></strong></p><p></p><p><strong>@ echo off<strong><br></strong></strong></p><p>E:\extrasoftware\python3\python.exe E:\extrasoftware\python3\Scripts\cxfreeze %*</p><p>之后果然正常了</p><p>可以使用cxfreeze -h 命令查看帮助信息：</p><p><img src="//img-blog.csdn.net/20180322094001623?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L3RhbmdnNTU1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt><br></p><p><strong></strong></p><h4><strong>cxfreeze命令的使用：</strong></h4><span style="font-size:14px;">首先在命令提示符中使用cd命令转换到所需要转换的python文件的目录中，因为转换后的dist文件夹会出现在命令提示符的当前目录中</span><strong></strong><p><br></p><p><strong><img src="//img-blog.csdn.net/20180322094218945?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L3RhbmdnNTU1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt><br></strong></p><p>我们需要根据</p><p><strong><img src="//img-blog.csdn.net/20180322094306350?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L3RhbmdnNTU1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt><br></strong></p><p>来设置需要转换的文件的路径<strong>：（<strong>--init-script=</strong>后接绝对路径）</strong></p><p><strong>这里输入：</strong></p><p><strong>cxfreeze --init-script=C:\Users\tangc\Desktop\alien_invasion\alien_invasion.py alien_invasion.py<br></strong></p><p>然后回车</p><p><img src="//img-blog.csdn.net/20180322094654725?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L3RhbmdnNTU1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt><br></p><p>一大串信息后成功，在文件夹中也出现了dist目录：</p><p><img src="//img-blog.csdn.net/20180322094731934?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L3RhbmdnNTU1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt></p><p>注意：如果你的程序中有图片等资源，是需要根据程序中的相对路径加入到dist文件中的</p><p>我打包的是<img src="//img-blog.csdn.net/20180322094844339?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L3RhbmdnNTU1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt></p><p>这个主程序，而我的图片文件夹在它的同一目录下，所以在dist文件夹中：</p><p><img src="//img-blog.csdn.net/20180322094940866?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L3RhbmdnNTU1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt><br></p><p>也要在.exe同目录中加入images的文件夹（图片资源）</p><p><img src="//img-blog.csdn.net/20180322095030235?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L3RhbmdnNTU1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt></p><p>双击.exe文件，运行成功！</p><p><img src="//img-blog.csdn.net/20180322095100161?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L3RhbmdnNTU1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt><br></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> cxfree </tag>
+            
+            <tag> pyinstaller </tag>
+            
+            <tag> 打包 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
