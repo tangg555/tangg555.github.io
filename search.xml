@@ -80,9 +80,9 @@
       
         <tags>
             
-            <tag> docker </tag>
-            
             <tag> docker 容器 </tag>
+            
+            <tag> docker </tag>
             
         </tags>
       
@@ -171,11 +171,11 @@
       
         <tags>
             
+            <tag> python </tag>
+            
             <tag> centos7 </tag>
             
             <tag> python3 </tag>
-            
-            <tag> python </tag>
             
         </tags>
       

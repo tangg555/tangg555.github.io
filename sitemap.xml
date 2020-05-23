@@ -100,13 +100,6 @@
   </url>
   
   <url>
-    <loc>https://tangg555.github.io/about/index.html</loc>
-    
-    <lastmod>2020-05-21T20:51:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://tangg555.github.io/archives/index.html</loc>
     
     <lastmod>2020-05-21T20:51:32.000Z</lastmod>
@@ -114,7 +107,7 @@
   </url>
   
   <url>
-    <loc>https://tangg555.github.io/categories/index.html</loc>
+    <loc>https://tangg555.github.io/about/index.html</loc>
     
     <lastmod>2020-05-21T20:51:32.000Z</lastmod>
     
@@ -122,6 +115,13 @@
   
   <url>
     <loc>https://tangg555.github.io/contact/index.html</loc>
+    
+    <lastmod>2020-05-21T20:51:32.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tangg555.github.io/categories/index.html</loc>
     
     <lastmod>2020-05-21T20:51:32.000Z</lastmod>
     
