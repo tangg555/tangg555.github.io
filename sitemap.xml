@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://tangg555.github.io/2020/05/23/nodejs-hexo-kuai-su-da-jian-ge-ren-bo-ke-xiang-xi-jiao-cheng/</loc>
+    
+    <lastmod>2020-05-23T17:34:22.573Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://tangg555.github.io/2020/05/19/2019-03-21-dijkstra-algorithms/</loc>
     
     <lastmod>2020-05-23T05:57:49.897Z</lastmod>
@@ -100,14 +107,14 @@
   </url>
   
   <url>
-    <loc>https://tangg555.github.io/archives/index.html</loc>
+    <loc>https://tangg555.github.io/about/index.html</loc>
     
     <lastmod>2020-05-21T20:51:32.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://tangg555.github.io/about/index.html</loc>
+    <loc>https://tangg555.github.io/archives/index.html</loc>
     
     <lastmod>2020-05-21T20:51:32.000Z</lastmod>
     
