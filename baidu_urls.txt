@@ -1,4 +1,6 @@
-https://tangg555.github.io/2020/05/23/nodejs-hexo-kuai-su-da-jian-ge-ren-bo-ke-xiang-xi-jiao-cheng/
+https://tangg555.github.io/2021/09/18/2021-09-18-chinese-estate-helper/
+https://tangg555.github.io/2021/08/24/2021-08-24-acl-anthology-helper/
+https://tangg555.github.io/2020/05/23/2020-05-23-nodejs-hexo-kuai-su-da-jian-ge-ren-bo-ke-xiang-xi-jiao-cheng/
 https://tangg555.github.io/2020/05/19/2019-03-21-dijkstra-algorithms/
 https://tangg555.github.io/2019/07/05/2019-07-05-shi-yong-docker-zai-jing-xiang-zhong-yun-xing-su-zhu-ji-cheng-xu-zhuan-zai/
 https://tangg555.github.io/2019/07/05/2019-07-05-docker-rong-qi-de-chuang-jian-qi-dong-he-ting-zhi-zhuan-zai/
