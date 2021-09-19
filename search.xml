@@ -115,11 +115,11 @@
       
         <tags>
             
+            <tag> python </tag>
+            
             <tag> Dijkstra </tag>
             
             <tag> 算法 </tag>
-            
-            <tag> python </tag>
             
         </tags>
       
@@ -173,9 +173,9 @@
       
         <tags>
             
-            <tag> docker 容器 </tag>
-            
             <tag> docker </tag>
+            
+            <tag> docker 容器 </tag>
             
         </tags>
       

@@ -137,11 +137,11 @@
       <category term="python" scheme="https://tangg555.github.io/categories/%E7%AE%97%E6%B3%95/python/"/>
     
     
+      <category term="python" scheme="https://tangg555.github.io/tags/python/"/>
+    
       <category term="Dijkstra" scheme="https://tangg555.github.io/tags/Dijkstra/"/>
     
       <category term="算法" scheme="https://tangg555.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="python" scheme="https://tangg555.github.io/tags/python/"/>
     
   </entry>
   
@@ -201,9 +201,9 @@
       <category term="Docker" scheme="https://tangg555.github.io/categories/Docker/"/>
     
     
-      <category term="docker 容器" scheme="https://tangg555.github.io/tags/docker-%E5%AE%B9%E5%99%A8/"/>
-    
       <category term="docker" scheme="https://tangg555.github.io/tags/docker/"/>
+    
+      <category term="docker 容器" scheme="https://tangg555.github.io/tags/docker-%E5%AE%B9%E5%99%A8/"/>
     
   </entry>
   
