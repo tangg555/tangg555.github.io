@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://tangg555.github.io/"/>
-  <updated>2021-09-18T19:22:07.280Z</updated>
+  <updated>2021-09-19T16:00:13.628Z</updated>
   <id>https://tangg555.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://tangg555.github.io/2021/09/18/2021-09-18-chinese-estate-helper/"/>
     <id>https://tangg555.github.io/2021/09/18/2021-09-18-chinese-estate-helper/</id>
     <published>2021-09-18T19:05:00.000Z</published>
-    <updated>2021-09-18T19:22:07.280Z</updated>
+    <updated>2021-09-19T16:00:13.628Z</updated>
     
     <summary type="html">
     
@@ -55,7 +55,7 @@
     <link href="https://tangg555.github.io/2021/08/24/2021-08-24-acl-anthology-helper/"/>
     <id>https://tangg555.github.io/2021/08/24/2021-08-24-acl-anthology-helper/</id>
     <published>2021-08-24T17:43:00.000Z</published>
-    <updated>2021-09-18T19:02:23.674Z</updated>
+    <updated>2021-09-19T16:04:14.086Z</updated>
     
     <summary type="html">
     
@@ -137,11 +137,11 @@
       <category term="python" scheme="https://tangg555.github.io/categories/%E7%AE%97%E6%B3%95/python/"/>
     
     
-      <category term="python" scheme="https://tangg555.github.io/tags/python/"/>
-    
       <category term="Dijkstra" scheme="https://tangg555.github.io/tags/Dijkstra/"/>
     
       <category term="算法" scheme="https://tangg555.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="python" scheme="https://tangg555.github.io/tags/python/"/>
     
   </entry>
   
@@ -301,11 +301,11 @@
       <category term="python" scheme="https://tangg555.github.io/categories/Linux/python/"/>
     
     
+      <category term="python" scheme="https://tangg555.github.io/tags/python/"/>
+    
       <category term="centos7" scheme="https://tangg555.github.io/tags/centos7/"/>
     
       <category term="python3" scheme="https://tangg555.github.io/tags/python3/"/>
-    
-      <category term="python" scheme="https://tangg555.github.io/tags/python/"/>
     
   </entry>
   

@@ -498,14 +498,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-09-18
+                    2021-09-19
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    291
+                    412
                 </div>
                 
 
@@ -527,42 +527,40 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="acl-anthology-helper"><a href="#acl-anthology-helper" class="headerlink" title="acl-anthology-helper"></a>acl-anthology-helper</h1><p><a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a><br><a href="/README_zh.md"><img src="https://img.shields.io/static/v1?label=Readme&message=%E4%B8%AD%E6%96%87&color=red" alt></a></p>
-<p>To help search, filter, and download papers from ‘acl anthology’ (<a href="https://aclanthology.org/" target="_blank" rel="noopener">https://aclanthology.org/</a>).</p>
-<h2 id="Main-Features"><a href="#Main-Features" class="headerlink" title="Main Features"></a>Main Features</h2><ul>
-<li>Retrieve papers from <a href="https://aclanthology.org/" target="_blank" rel="noopener">acl anthology</a>.<br><br> retrieve directly from website <a href="https://aclanthology.org/" target="_blank" rel="noopener">acl anthology</a>.<br><br> e.g. <code>Retriever.acl(2021, ConfConsts.LONG)</code><br><br> download all papers’s info to local (<a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">MySQL database</a>).<br><br> e.g.<br><br><code>db = AnthologyMySQL(cache_enable=True)</code><br><br><code>db.create_tables()</code><br><br><code>db.load_data()  # load data and put into database</code> </li>
-<li>Import <a href="https://github.com/lizhenggan/ABuilder" target="_blank" rel="noopener">ABuilder</a> to support chain operations for <a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">MySQL</a>.<br><br> e.g.<br><br><code>data = ABuilder().table(&#39;paper&#39;).where({&quot;year&quot;: [&quot;in&quot;, years_limit]}).where({&quot;venue&quot;: [&quot;in&quot;, venue_limit]}).query()</code></li>
-<li>Filter papers with by keyword.<br><br> e.g. <code>filtered = papers.filter(&#39;title&#39;, &#39;xxx&#39;) | papers.filter(&#39;abstract&#39;, &#39;xxx&#39;)</code><br><br> e.g. <code>filtered = papers.and_containing_filter(attr, [keyword1, keyword2])</code> </li>
-<li>Download papers.<br><br> e.g. <code>downloader.multi_download(filtered, download_path)</code> </li>
-<li>Local cache available.</li>
-<li>Log available.</li>
-<li>Statistics available (although I only count the total number of papers).</li>
+                <h1 id="acl-anthology-helper"><a href="#acl-anthology-helper" class="headerlink" title="acl-anthology-helper"></a>acl-anthology-helper</h1><h2 id="Github源代码仓库"><a href="#Github源代码仓库" class="headerlink" title="Github源代码仓库"></a>Github源代码仓库</h2><p><a href="https://github.com/tangg555/acl-anthology-helper" target="_blank" rel="noopener">https://github.com/tangg555/acl-anthology-helper</a></p>
+<h1 id="acl-anthology-helper-1"><a href="#acl-anthology-helper-1" class="headerlink" title="acl-anthology-helper"></a>acl-anthology-helper</h1><p>acl-anthology-helper的主要目的是快速地从’acl anthology’ (<a href="https://aclanthology.org/" target="_blank" rel="noopener">https://aclanthology.org/</a>)官网上下载指定论文集中包含某些关键词的论文.</p>
+<h2 id="主要功能"><a href="#主要功能" class="headerlink" title="主要功能"></a>主要功能</h2><ul>
+<li>检索<a href="https://aclanthology.org/" target="_blank" rel="noopener">acl anthology</a> 官网中收录的论文。<br><br> 直接从网上检索.<br><br> e.g. <code>Retriever.acl(2021, ConfConsts.LONG)</code><br><br> 将论文保存到本地数据库中(<a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">MySQL</a>).<br><br> e.g.<br><br><code>db = AnthologyMySQL(cache_enable=True)</code><br><br><code>db.create_tables()</code><br><br><code>db.load_data()  # 将数据爬取载入数据库中</code> </li>
+<li>引入<a href="https://github.com/lizhenggan/ABuilder" target="_blank" rel="noopener">ABuilder</a> 以支持对<a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">MySQL</a> 的链式操作。<br><br> e.g.<br><br><code>data = ABuilder().table(&#39;paper&#39;).where({&quot;year&quot;: [&quot;in&quot;, years_limit]}).where({&quot;venue&quot;: [&quot;in&quot;, venue_limit]}).query()</code></li>
+<li>通过关键词对论文进行过滤。<br><br> e.g. <code>filtered = papers.filter(&#39;title&#39;, &#39;xxx&#39;) | papers.filter(&#39;abstract&#39;, &#39;xxx&#39;)</code><br><br> e.g. <code>filtered = papers.and_containing_filter(attr, [keyword1, keyword2])</code> </li>
+<li>下载所需要的论文。<br><br> e.g. <code>downloader.multi_download(filtered, download_path)</code> </li>
+<li>本地缓存。</li>
+<li>日志打印。</li>
+<li>信息采集。</li>
 </ul>
-<h2 id="Get-Started"><a href="#Get-Started" class="headerlink" title="Get Started"></a>Get Started</h2><ul>
-<li><p>Firstly. <a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">MySQL</a> is required. Mine is MySQL 8.<br><br>Configurate your MySQL database and add a <code>src/configuration/mysql_cfg.py</code>.<br><br>The content of <code>src/configuration/mysql_cfg.py</code> is as follows:</p>
+<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><ul>
+<li><p>首先， 你需要安装<a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">MySQL</a> ，我使用的是MySQL 8。<br><br>配置你的MySQL数据库，添加 <code>src/configuration/mysql_cfg.py</code>文件。<br><br> <code>src/configuration/mysql_cfg.py</code> 的文件内容可以参考以下格式:</p>
 <pre class="line-numbers language-python3"><code class="language-python3">class MySQLCFG(object):
   HOST = 'localhost'
   PORT = 3306
   USER = "root"
   PASSWORD = "xxx"
   DB = "xxx"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>Meanwhile, create the corresponding database in your MySQL database.</p>
+<p>同时，在MySQL中创建相应的数据库。</p>
 </li>
-<li><p>Secondly. If you want to use <a href="https://github.com/lizhenggan/ABuilder" target="_blank" rel="noopener">ABuilder</a>.<br><br>You need to write a <code>tasks/database.py</code> with configurations of you MySQL.<br><br>You can refer to the homepage of <a href="https://github.com/lizhenggan/ABuilder" target="_blank" rel="noopener">ABuilder</a>.</p>
+<li><p>如果你想使用 <a href="https://github.com/lizhenggan/ABuilder" target="_blank" rel="noopener">ABuilder</a> 对MySQL进行链式查询。<br><br>你需要写一个ABuilder的配置文件 <code>tasks/database.py</code> 。<br><br>具体内容你可以参考<a href="https://github.com/lizhenggan/ABuilder" target="_blank" rel="noopener">ABuilder</a>.</p>
 </li>
-<li><p>Download and decompress the code, open a terminal and checkout to the root directory.<br><br>run</p>
-</li>
-</ul>
+<li><p>下载代码，打开终端切换至代码的根目录。<br>运行</p>
 <pre class="line-numbers language-python3"><code class="language-python3">pip install requirements.txt
 cd tasks
 python basic_task.py<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>That’s it.</p>
-<h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><p>I develop this project by Python 3.6, and it doesn’t support python 2.</p>
-<p><strong>homepage</strong></p>
-<p><img src="https://github.com/tangg555/acl-anthology-helper/tree/main/images/aclanthology.png" alt></p>
-<p>There are many conferences and contents belonging to them. </p>
-<p>Choose one, and we can see papers’ list.</p>
-<p><img src="https://github.com/tangg555/acl-anthology-helper/tree/main/images/paper_list.png" alt></p>
+</li>
+</ul>
+<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>该项目用 Python 3.6 所写, 不支持 Python 2。</p>
+<p><strong>ACL Anthology官网</strong><br><img src alt style="max-width: 100%;"><br><img src="https://github.com/tangg555/acl-anthology-helper/raw/main/images/aclanthology.png" alt></p>
+<p>可以看到有很多论文集。</p>
+<p>打开其中一个可以看到论文列表。</p>
+<p><img src="https://github.com/tangg555/acl-anthology-helper/raw/main/images/paper_list.png" alt></p>
 
             </div>
             <hr/>
@@ -1149,7 +1147,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">11.1k</span>&nbsp;字
+                class="white-color">11.2k</span>&nbsp;字
             
             
             
